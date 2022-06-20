@@ -13,5 +13,11 @@
   "bugs": {
     "url": "https://github.com/circlesland/timecircle/issues"
   },
-  "homepage": "https://github.com/circlesland/timecircle#readme"
+  "homepage": "https://github.com/circlesland/timecircle#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "circlesubi"
+  ]
 }
