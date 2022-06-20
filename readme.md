@@ -5,7 +5,7 @@ The unit is rooted in the daily UBI payout every user receives in CRC and the fi
 
 # Usage
 ```js
-import {crcToTc, tcToCrc} from "@jaensen/timecircles";
+import {crcToTc, tcToCrc} from "@circles/timecircles";
 
 // Since TC are time-dependent we'll always need a timestamp
 const transactionTimestamp = new Date("2022-05-03T04:21:25.000Z");
