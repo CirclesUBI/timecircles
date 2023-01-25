@@ -3,6 +3,9 @@ Time Circles (TC) are a time-dependent display unit for [Circles](https://github
 
 The unit is rooted in the daily UBI payout every user receives in CRC and the fixed inflation rate. It normalizes the daily UBI payout to 24 TC regardless of the inflation.
 
+# Example
+If you just want to convert TC to CRC and vice versa you can use https://circlesubi.github.io/timecircles/
+
 # Usage
 ```js
 import {crcToTc, tcToCrc} from "@circles/timecircles";
