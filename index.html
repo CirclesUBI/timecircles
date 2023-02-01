@@ -1,12 +1,14 @@
 <html>
 <head>
     <title>Circles/Timecircles converter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         * {
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         }
+
         body {
-            font-size: 1.25em;
+            font-size: 1.1em;
             line-height: 1.42857143;
             color: #333;
             background-color: #fff;
@@ -14,6 +16,13 @@
 
         input, select {
             font-size: 1em;
+
+            display: inline-block;
+            width: 250px;
+        }
+        label {
+            display: inline-block;
+            width:150px;
         }
     </style>
     <script>
@@ -139,16 +148,6 @@
         }
 
     </script>
-    <style>
-        label {
-            display: inline-block;
-            width:150px;
-        }
-        input {
-            display: inline-block;
-            width: 200px;
-        }
-    </style>
 </head>
 <body>
 <label for="amount">Amount:</label>
