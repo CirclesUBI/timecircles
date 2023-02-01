@@ -1,6 +1,15 @@
 <html>
 <head>
     <title>Circles/Timecircles converter</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #333;
+            background-color: #fff;
+        }
+    </style>
     <script>
         /**
          * The point in time when the Circles Hub contract was deployed.
@@ -79,6 +88,12 @@
     </script>
     <script>
         document.onreadystatechange = function () {
+            // Show the user's timezone
+            const timezone = document.getElementById('timezone');
+            timezone.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            const utcOffset = new Date().getTimezoneOffset() / 60;
+            timezone.value += ' (UTC' + (utcOffset > 0 ? '-' : '+') + Math.abs(utcOffset) + ')';
+
             if (document.readyState === "complete") {
                 const amount = document.getElementById('amount');
                 const from = document.getElementById('from');
@@ -91,9 +106,10 @@
                     const amountValue = parseFloat(amount.value);
                     const fromValue = from.value;
                     if (timestamp.value === '') {
-                        timestamp.value = new Date().toISOString();
+                        timestamp.value = new Date().toLocaleString();
                     }
                     const transactionTimestamp = Date.parse(timestamp.value);
+
                     if (isNaN(transactionTimestamp)) {
                         result.innerText = "Invalid 'At' timestamp";
                         return;
@@ -102,6 +118,10 @@
                         result.innerText = "Transaction timestamp must be after Circles inception (2020-10-15T00:00:00.000Z)";
                         return;
                     }
+
+                    // Show the entered timestamp in UTC in the #utc_time element
+                    const utcTime = document.getElementById('utc_time');
+                    utcTime.value = new Date(transactionTimestamp).toISOString();
 
                     if (fromValue === 'TC') {
                         result.innerText = tcToCrc(transactionTimestamp, amountValue) + " CRC";
@@ -131,12 +151,19 @@
     <option value="CRC">CRC -> TC</option>
     <option value="TC">TC -> CRC</option>
 </select><br/>
-<label for="timestamp">At:</label>
+<label for="timestamp">At (local time):</label>
 <input type="text" id="timestamp" name="timestamp" value="">
 <input id="convert" type="submit" value="Convert">
+<br/><br/>
+<label for="utc_time">At (utc time):</label>
+<input style="border:none;" type="text" readonly id="utc_time" name="timestamp" value="">
 <br/>
-<br/>
+<label for="timezone">Your timezone:</label>
+<input style="border:none;" type="text" readonly id="timezone" name="timestamp" value="">
+<br/><br/>
+<b>
 <label for="result">Result:</label>
 <span id="result"></span>
+</b>
 </body>
 </html>
