@@ -36,7 +36,7 @@ function getCrcPayoutAt(timestamp) {
     // Use linear interpolation to find the 'exact' payout amount at the given point in time
     const x = payoutPerDayInYear.previous;
     const y = payoutPerDayInYear.current;
-    const a = daysInCurrentCirclesYear / 365.25;
+    const a = daysInCurrentCirclesYear / oneCirclesYearInDays;
     return x * (1 - a) + y * a;
 }
 /**
